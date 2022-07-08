@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Main{
     public static void main(String args[]){
         final Scanner sc = new Scanner(System.in);
@@ -14,12 +15,14 @@ public class Main{
             int input_acno = sc.nextInt();
             System.out.println("Enter your Password");
             String input_pwd = sc.next();
-            Authenticate auth = new Authenticate();
-            AccountHolder ach =  auth.login(input_acno, input_pwd);
-            if(ach.acno == 0){
+            AccountHolder ach  =  Authenticate.login(input_acno, input_pwd);
+            if(ach == null){
                 System.out.println("invalid account or password");
             }else{
-                //next phase starts here 
+                System.out.println("1. Account Details \n 2. Deposit \n 3. Withdrawal \n 4. Transfer 5. Statement");
+                int choice = sc.nextInt();
+                loginMenu(choice,ach);
+
             }
             
 
@@ -38,15 +41,38 @@ public class Main{
             ach.address = sc.nextLine();
             System.out.println("Enter your password");
             ach.password = sc.nextLine();
-            
-            new Account().createAccount(ach);
+
+            ach.acno = Account.getAcno();
             //saved the user into our database array
-            Database.totalAccounts[Database.idx++] = ach;
-            System.out.println("Account successfuly create , Please login with your credentials");
+            Database.totalAccounts.add(ach);
+            System.out.println("Account successfuly create , Please login with your credentials, your acno is "+ach.acno);
         }else{
             //invalid input 
             System.out.println("invalid input retry");
         }
+        }
+    }
+
+    static void loginMenu(int choice,AccountHolder ach){
+        switch(choice){
+            case 1:
+            //display 
+            ach.displayInfo();
+             break;
+            case 2:
+            //deposit
+            break;
+            case 3:
+            //withdrawal
+            break;
+            case 4:
+            //transfer 
+            break;
+            case 5:
+            //statement
+            break;
+            default:
+            System.out.println("Invalid choice");
         }
     }
 }

@@ -1,11 +1,10 @@
-public class AccountHolder {
+ class AccountHolder extends Account {
     String name, mailid, dob, password, address, phoneno;
-    int acno;
-    Account accountInfo;
+    
 
     AccountHolder(String name, String mailid, String dob, String password, String address, String phoneno, int acno,
-            Account accountInfo) {
-        this.accountInfo = accountInfo;
+            int balance) {
+        this.balance = balance;
         this.acno = acno;
         this.name = name;
         this.mailid = mailid;
@@ -19,7 +18,11 @@ public class AccountHolder {
     }
 
     void displayInfo() {
-        System.out.println("Name :" + this.name + "\n" + "Mail :" + this.mailid + "\n" + "Acno :" + this.acno);
-    }
+        System.out.println("acno :" + acno);
+        System.out.println("name :" +name);
+        System.out.println("mailid :" +mailid);
+        System.out.println("dob :" +dob);
+        System.out.println("balance :" +balance);
+        System.out.println("branc :" + branch); }
 
 }

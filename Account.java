@@ -1,23 +1,19 @@
+import java.util.ArrayList;
+
 public class Account {
     int acno,balance;
     String branch;
-    Statement[] transHistory = new Statement[10];
+    ArrayList<Statement> transHistory = new ArrayList<Statement>();
 
-    Account(int acno,int balance,Statement[] transHistory){
+    Account(int acno,int balance){
         this.acno = acno ;
         this.balance = balance;
-        this.transHistory = transHistory;
         this.branch = "Dewas";
     }
     Account(){}
 
-    void createAccount(AccountHolder ach){
-        Account act = new Account();
-        act.balance = 0;
-        ach.acno = Database.acno;
-        act.acno = Database.acno++;
-        ach.accountInfo = act;
-
+    static int  getAcno(){
+        return Database.acno++;
     }
 
 

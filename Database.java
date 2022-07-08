@@ -1,5 +1,6 @@
+import java.util.ArrayList;
+
 public class Database {
-    static AccountHolder[] totalAccounts = new AccountHolder[100];
-    static int idx=0;
+    static ArrayList<AccountHolder> totalAccounts = new ArrayList<AccountHolder>();
     static int acno = 18372840;
 }
