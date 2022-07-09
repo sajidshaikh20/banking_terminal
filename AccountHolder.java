@@ -36,7 +36,7 @@ class AccountHolder extends Account {
                 System.out.println("Sender Acno :" + statement.sacno);
                 System.out.println("Reciever Acno :" + statement.racno);
             }
-            System.err.println("\n\n");
+            System.err.println();
         }
     }
 
