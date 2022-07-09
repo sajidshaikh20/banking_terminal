@@ -1,10 +1,9 @@
 enum Status{
-    DEBIT,CREDIT,FAILED
+    DEBIT,CREDIT,FAILED,TRANSFER
 }
 
 public class Statement {
     int racno,sacno,amount,tranID;
-    String date;
     Status status;
 
     Statement(int racno,int sacno,int amount,int tranID,String date , Status status){
@@ -13,8 +12,8 @@ public class Statement {
         this.sacno=sacno;
         this.amount=amount;
         this.tranID=tranID;
-        this.date=date; 
     }
+    Statement(){}
 
 
 }

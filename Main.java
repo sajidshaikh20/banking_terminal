@@ -21,8 +21,7 @@ public class Main{
             }else{
                 System.out.println("1. Account Details \n 2. Deposit \n 3. Withdrawal \n 4. Transfer 5. Statement");
                 int choice = sc.nextInt();
-                loginMenu(choice,ach);
-
+                loginMenu(choice,ach,sc);
             }
             
 
@@ -53,23 +52,46 @@ public class Main{
         }
     }
 
-    static void loginMenu(int choice,AccountHolder ach){
+    static void loginMenu(int choice,AccountHolder ach,Scanner sc){
         switch(choice){
             case 1:
             //display 
             ach.displayInfo();
              break;
             case 2:
-            //deposit
+            System.out.println("enter amount to deposit");
+            int amount = sc.nextInt();
+            boolean status = ach.depositAmount(amount);
+            if(status)
+                System.out.println("amount deposited");
+            else 
+                System.out.println("Please try again");
+
             break;
             case 3:
             //withdrawal
+            System.out.println("enter the amount to withdrawal");
+            int wdAmount = sc.nextInt();
+            boolean wdstatus = ach.withdrawalAmount(wdAmount);
+            if(wdstatus)
+                System.out.println("Collect your amount");
+            else 
+                System.out.println("Insuffecient Fund");
             break;
             case 4:
-            //transfer 
+            System.out.println("Enter third party Ac no");
+            int sacno = sc.nextInt();
+            System.out.println("Enter amount to transfer");
+            int tranAmount = sc.nextInt();
+            boolean trnStatus = ach.runTransaction(tranAmount, sacno);
+            if(trnStatus)
+                System.err.println("Transaction successful");
+            else 
+                System.out.println("Something went wrong");
             break;
             case 5:
             //statement
+            ach.showStatements();
             break;
             default:
             System.out.println("Invalid choice");
